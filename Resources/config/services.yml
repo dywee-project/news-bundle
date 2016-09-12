@@ -1,4 +1,32 @@
 services:
-#    dywee_news.example:
-#        class: Dywee\NewsBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ###########################
+    #                         #
+    #         SIDEBAR         #
+    #                         #
+    ###########################
+
+    dywee_news.admin_sidebar_listener:
+        class: Dywee\NewsBundle\Listener\AdminSidebarBuilderListener
+        arguments: [ '@dywee_news.sidebar_handler' ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    dywee_news.sidebar_handler:
+        class: Dywee\NewsBundle\Service\AdminSidebarHandler
+        arguments: [ '@router' ]
+
+    ###########################
+    #                         #
+    #        DASHBOARD        #
+    #                         #
+    ###########################
+
+    dywee_news.admin_dashboard_listener:
+        class: Dywee\NewsBundle\Listener\AdminDashboardBuilderListener
+        arguments: [ '@dywee_news.dashboard_handler' ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    dywee_news.dashboard_handler:
+        class: Dywee\NewsBundle\Service\AdminDashboardHandler
+        arguments: [ '@router' ]
