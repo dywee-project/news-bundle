@@ -1,0 +1,24 @@
+{# Dywee\NewsBundle\Resources\View\News\edit.html.twig #}
+
+{%  extends "DyweeNewsBundle::admin.html.twig" %}
+
+{% block title %}
+    Modification d'une News {{ parent() }}
+{% endblock %}
+
+{% block footerJavascript %}
+    <script>
+        $(document).ready(function(){
+            $("#dywee_newsbundle_news_image_file").fileinput({showUpload: false, showRemove: false});
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="title-heading">
+        <h1>Modification de {{ news.title }}</h1>
+    </div>
+
+
+    {%  include "DyweeNewsBundle:News:form.html.twig" %}
+{% endblock %}

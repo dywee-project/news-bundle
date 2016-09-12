@@ -1,0 +1,54 @@
+{# Dywee\NewsBundle\Resources\View\News\table.html.twig #}
+
+{%  extends "DyweeNewsBundle::admin.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('dywee_news_add') }}" class="btn btn-success action-right"><i class="fa fa-plus"></i> Ajouter</a>
+
+            <div class="title-heading">
+                <h1 class="text-center">Liste des News</h1>
+            </div>
+            {% if newsList|length > 0 %}
+                <table class="table table-striped table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titre</th>
+                        <th>Date de publication</th>
+                        <th>Auteur</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for news in newsList %}
+                            <tr>
+                                <td><small>{{ news.id }}</small></td>
+                                <td>{{ news.title }}</td>
+                                <td>{{ news.publicationDate|date('d/m/Y') }}</td>
+                                <td>{{ news.createdBy.firstName|capitalize }} {{ news.createdBy.lastName|capitalize }}</td>
+                                <td>{% if news.state == 0 %}
+                                            <span class="label label-warning">Brouillon</span>
+                                        {% elseif news.state == 1 %}
+                                            <span class="label label-success">Publiée</span>
+                                        {% endif %}
+
+                                </td>
+                                <td class="actions"> {#<a href="{{ path('dywee_news_view', {data: news.id}) }}" class="link-unstyled" target="_blank"><i class="fa fa-eye"></i> </a>#}
+                                        <a href="{{ path('dywee_news_update', {id: news.id}) }}" class="link-unstyled"><i class="fa fa-pencil"></i> </a>
+                                        <a href="{{ path('dywee_news_delete', {id: news.id}) }}" class="link-unstyled"><i class="fa fa-trash-o"></i> </a>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Vous n'avez pas encore écrit de news.</p>
+                <p><a href="{{ path('dywee_news_add') }}" class="btn btn-success"><i class="fa fa-pencil"></i> Ecrire une news</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

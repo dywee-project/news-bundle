@@ -1,0 +1,17 @@
+{# Dywee\NewsBundle\Resources\View\News\show.html.twig #}
+
+<div class="col-xs-12 news">
+    <div class="row">
+        <div class="col-xs-3">
+            <img src="{{ news.img }}" alt="{{ news.title }}" class="img-responsive" style="margin-top:10px">
+            </div>
+        <div class="col-xs-9">
+            <h3 class="h4">{{ news.title }}</h3>
+            {{ news.content }}
+            <hr>
+            <small>{{ 'Publié le'|trans }} {{ publicationDate|date('d/m/Y à H\hm') }}</small>
+            <a href="{{ path('dywee_news_view', {data: news.seoUrl}) }}" class="btn btn-default pull-right">{{ 'Lire la suite'|trans }}</a>
+            </div>
+        </div>
+    </div>
+</div>

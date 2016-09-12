@@ -1,0 +1,16 @@
+{# Dywee\NewsBundle\Resources\View\News\sideBar.html.twig #}
+
+<p class="h3 underline">News</p>
+{% for news in newsList %}
+    <div class="row newsList">
+        <div class="col-md-12">
+            <p class="h5">{{ news.title }}</p>
+            <p>{{ news.content|truncate(150, true)|striptags|raw }}</p>
+            <a href="{{ path('dywee_news_view', {data: news.id}) }}" class="btn btn-default pull-right">Lire la suite <i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+
+    {% if loop.index %}
+        <hr>
+    {% endif %}
+{% endfor %}

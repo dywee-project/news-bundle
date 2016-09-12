@@ -1,0 +1,22 @@
+{# Dywee\NewsBundle\Resources\View\News\list.html.twig #}
+<div class="blog_posts">
+    <div class="container">
+        <div class="title animated wow fadeIn col-md-12">
+            <h2>Nos actualités</h2>
+            <h3>Les derniers articles de notre blog</h3>
+            <hr class="separator"/>
+        </div>
+        <div class="row">
+            {% if newsList|length > 0 %}
+                {% for news in newsList %}
+                    {% include 'DyweeNewsBundle:News:preview.html.twig' %}
+                {% endfor %}
+            {% else %}
+                <p class="text-center">Il n'y a pas encore de news, restez à l'écoute</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+</div>

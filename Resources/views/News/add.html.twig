@@ -1,0 +1,20 @@
+{# Dywee\NewsBundle\Resources\View\News\add.html.twig #}
+
+{%  extends "DyweeNewsBundle::admin.html.twig" %}
+
+{% block title %} Creation d'une news - {{ parent() }} {% endblock %}
+
+{% block footerJavascript %}
+    <script>
+        $(document).ready(function(){
+            $("#dywee_newsbundle_news_image_file").fileinput({showUpload: false, showRemove: false});
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle news</h1>
+
+    {% include "DyweeNewsBundle:News:form.html.twig" %}
+
+{% endblock %}

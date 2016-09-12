@@ -1,0 +1,38 @@
+{# Dywee\NewsBundle\Resources\View\News\view.html.twig #}
+
+{%  extends "DyweeNewsBundle::layout.html.twig" %}
+
+{% block title %} {{ news.metaTitle }} - {{ parent() }} {% endblock %}
+
+{% block bodyContent %}
+    <h1 class="article-header">{{ news.title }}</h1>
+    <p>{{ news.content|raw }}</p>
+    <div class="spacer"></div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <p><a href="{{ path('dywee_news_list') }}" class="btn btn-default"><i class="fa fa-angle-left"></i> {{ 'Retour aux news'|trans }}</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>Newsletter</h4>
+            <div id="newsletter-form">
+                <div class="newsletter-log"></div>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="email">{{ 'Restez informés'|trans }}</label>
+                        <input type="email" class="form-control" id="email" placeholder="{{ 'Entrez votre email'|trans }}">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-block" onClick="newsletter()">{{ 'Inscription'|trans }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="fb-share-button" data-href="#" data-type="button_count"></div>
+        </div>
+    </div>
+
+
+{% endblock %}
