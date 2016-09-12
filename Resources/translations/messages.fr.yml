@@ -1,3 +1,11 @@
-'Symfony2 is great': 'J''aime Symfony2'
-'Publié le': 'Publié le'
-'Lire la suite': 'Lire la suite'
+news:
+
+    sidebar:
+        label: News
+        table: Liste des news
+
+    dashboard:
+        label: Dernières news
+
+    publishedAt: Publiée le
+    seeWhole: Lire la suite

@@ -4,9 +4,11 @@ namespace Dywee\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Dywee\CoreBundle\Traits\Picture;
+use Dywee\CoreBundle\Traits\Seo;
 use Dywee\UserBundle\Entity\User;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * News
@@ -14,12 +16,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="news")
  * @ORM\Entity(repositoryClass="Dywee\NewsBundle\Repository\NewsRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class News
 {
 
     use Picture;
     use TimestampableEntity;
+    use Seo;
 
     const STATE_DRAFT = 'draft';
     const STATE_PUBLISHED = 'published';
