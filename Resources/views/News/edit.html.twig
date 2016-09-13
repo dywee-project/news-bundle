@@ -2,7 +2,7 @@
 
 {%  extends "DyweeNewsBundle::admin.html.twig" %}
 
-{% block title %}
+{% block metaTitle %}
     Modification d'une News {{ parent() }}
 {% endblock %}
 
@@ -19,6 +19,6 @@
         <h1>Modification de {{ news.title }}</h1>
     </div>
 
-
     {%  include "DyweeNewsBundle:News:form.html.twig" %}
+
 {% endblock %}
