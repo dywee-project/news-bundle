@@ -3,6 +3,7 @@ news:
     sidebar:
         label: News
         table: Liste des news
+        add: Ecrire une news
 
     dashboard:
         label: Dernières news

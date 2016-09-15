@@ -16,12 +16,20 @@
                 <td><small>{{ loop.index }}</small></td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.createdAt|date('d/m/Y') }}</td>
-                <td>{{ news.createdBy.firstName|capitalize }} {{ news.createdBy.lastName|capitalize }}</td>
+                <td>
+                    {% if news.createdBy is not null %}
+                        {{ news.createdBy.firstName|capitalize }} {{ news.createdBy.lastName|capitalize }}
+                    {% endif %}
+                </td>
                 <td>{{ news.state|trans }}
                 </td>
-                <td class="actions"> {#<a href="{{ path('dywee_news_view', {data: news.id}) }}" class="link-unstyled" target="_blank"><i class="fa fa-eye"></i> </a>#}
-                    <a href="{{ path('news_update', {id: news.id}) }}" class="link-unstyled"><i class="fa fa-pencil"></i> </a>
-                    <a href="{{ path('news_delete', {id: news.id}) }}" class="link-unstyled"><i class="fa fa-trash-o"></i> </a>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <a href="{{ path('news_view', {id: news.id}) }}" class="btn btn-default" target="_blank"><i class="fa fa-eye"></i> </a>
+                        <a href="{{ path('news_update', {id: news.id}) }}" class="btn btn-default"><i class="fa fa-pencil"></i> </a>
+                    </div>
+                    <a href="{{ path('news_delete', {id: news.id}) }}" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> </a>
+
 
                 </td>
             </tr>

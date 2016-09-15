@@ -13,6 +13,7 @@
                     </div>
                     <h2 class="box-title">Liste des News</h2>
                 </div>
+                {% include 'DyweeNewsBundle:News:miniTable.html.twig' %}
                 <div class="box-body">
                     <p><a href="{{ path('news_add') }}" class="btn btn-default btn-block"><i class="fa fa-pencil"></i> Ecrire une news</a></p>
                 </div>

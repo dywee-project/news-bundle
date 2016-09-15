@@ -61,7 +61,6 @@ class News
 
     /**
      * @ORM\ManyToOne(targetEntity="Dywee\UserBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $createdBy;
 

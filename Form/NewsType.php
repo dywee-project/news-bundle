@@ -21,14 +21,14 @@ class NewsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $choices = array(
-            News::STATE_DRAFT => News::STATE_DRAFT,
-            News::STATE_PUBLISHED => News::STATE_PUBLISHED
+            News::STATE_DRAFT       => News::STATE_DRAFT,
+            News::STATE_PUBLISHED   => News::STATE_PUBLISHED
         );
 
         $builder
             ->add('title',          TextType::class)
             ->add('image',          ImageType::class, array('required' => false))
-            ->add('content',        CKEditorType::class)
+            ->add('content',        CKEditorType::class, array('required' => true))
             ->add('seo',            SeoType::class,         array(
                 'data_class' => 'Dywee\ProductBundle\Entity\BaseProduct'
             ))

@@ -20,6 +20,7 @@ class NewsController extends ParentController
         return parent::addAction($request); 
     }
 
+
     /**
      * @Route(name="news_view", path="news/{id}")
      */
@@ -52,14 +53,15 @@ class NewsController extends ParentController
         return parent::deleteAction($object, $request); 
     }
 
-    public function listAction($limit = null)
+    /**
+     * @Route(name="news_list", path="news")
+     */
+    public function listAction($limit = 10)
     {
         $em = $this->getDoctrine()->getManager();
-        $nr = $em->getRepository('DyweeNewsBundle:News');
+        $news = $em->getRepository('DyweeNewsBundle:News')->findBy(array('state' => News::STATE_PUBLISHED), array('createdAt' => 'desc', ($page-1)*$limit, $limit));
 
-        $nl = $nr->myFind($this->container->getParameter('website.id'), $limit);
-
-        return $this->render('DyweeNewsBundle:News:list.html.twig', array('newsList' => $nl));
+        return $this->render('DyweeNewsBundle:News:list.html.twig', array('news' => $news));
 
     }
 
