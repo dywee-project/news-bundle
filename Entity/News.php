@@ -5,7 +5,7 @@ namespace Dywee\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Dywee\CoreBundle\Traits\Picture;
 use Dywee\CoreBundle\Traits\Seo;
-use Dywee\UserBundle\Entity\User;
+use Dywee\UserBundle\Entity\UserInterface;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -20,7 +20,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class News
 {
-
     use Picture;
     use TimestampableEntity;
     use Seo;
@@ -44,7 +43,6 @@ class News
      */
     private $title;
 
-
     /**
      * @var string
      *
@@ -60,7 +58,7 @@ class News
     private $state = self::STATE_DRAFT;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Dywee\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      */
     private $createdBy;
 
@@ -149,10 +147,10 @@ class News
     /**
      * Set createdBy
      *
-     * @param User $createdBy
+     * @param UserInterface $createdBy
      * @return News
      */
-    public function setCreatedBy(User $createdBy)
+    public function setCreatedBy(UserInterface $createdBy)
     {
         $this->createdBy = $createdBy;
 
@@ -167,10 +165,5 @@ class News
     public function getCreatedBy()
     {
         return $this->createdBy;
-    }
-
-    public function __construct()
-    {
-        $this->publicationDate = new \DateTime();
     }
 }
