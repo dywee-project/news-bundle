@@ -3,10 +3,11 @@
 namespace Dywee\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Dywee\CoreBundle\Model\UserInterface;
 use Dywee\CoreBundle\Traits\Picture;
 use Dywee\CoreBundle\Traits\Seo;
+use Dywee\UserBundle\Entity\UserInterface;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -57,7 +58,7 @@ class News
     private $state = self::STATE_DRAFT;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Dywee\CoreBundle\Model\UserInterface")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      */
     private $createdBy;
 
@@ -159,7 +160,7 @@ class News
     /**
      * Get createdBy
      *
-     * @return UserInterface
+     * @return \Dywee\UserBundle\Entity\User 
      */
     public function getCreatedBy()
     {
