@@ -8,25 +8,39 @@ use Dywee\NewsBundle\Service\AdminDashboardHandler;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 
-class AdminDashboardBuilderListener implements EventSubscriberInterface{
+class AdminDashboardBuilderListener implements EventSubscriberInterface
+{
+
+    /** @var AdminDashboardHandler */
     private $adminDashboardHandler;
 
+    /**
+     * AdminDashboardBuilderListener constructor.
+     *
+     * @param AdminDashboardHandler $adminDashboardHandler
+     */
     public function __construct(AdminDashboardHandler $adminDashboardHandler)
     {
         $this->adminDashboardHandler = $adminDashboardHandler;
     }
 
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         // return the subscribed events, their methods and priorities
-        return array(
-            DyweeCoreEvent::BUILD_ADMIN_DASHBOARD => array('addElementToDashboard', 1012)
-        );
+        return [
+            DyweeCoreEvent::BUILD_ADMIN_DASHBOARD => ['addElementToDashboard', 1012]
+        ];
     }
 
-    public function addElementToDashboard(DashboardBuilderEvent $adminDashboardBuilderEvent)
+    /**
+     * @param DashboardBuilderEvent $dashboardBuilderEvent
+     */
+    public function addElementToDashboard(DashboardBuilderEvent $dashboardBuilderEvent)
     {
-        $adminDashboardBuilderEvent->addElement($this->adminDashboardHandler->getDashboardElement());
+        $dashboardBuilderEvent->addElement($this->adminDashboardHandler->getDashboardElement());
     }
 
 }

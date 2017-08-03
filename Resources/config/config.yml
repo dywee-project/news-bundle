@@ -1,0 +1,8 @@
+#vich_uploader:
+#    db_driver: orm
+#    metadata:
+#        auto_detection: true
+#    mappings:
+#        news:
+#            uri_prefix:         /images/news
+#            upload_destination: "%kernel.root_dir%/../web/images/news"
